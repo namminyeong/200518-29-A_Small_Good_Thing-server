@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       date: {
-        type: DataTypes.DATEONLY.format("YYYY-MM-DD"), // TODO: search format
+        type: DataTypes.DATEONLY, // TODO: search format
         allowNull: false,
       },
       memo: {

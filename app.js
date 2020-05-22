@@ -2,11 +2,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+// !
+//const login = require("./routes/user");
+//const getMonthlyList = require("./routes/mainpage");
+const router = require("./routes/user");
+// !
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: [
+    "http://localhost:3000",
+    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com"
+  ]
 };
 
 app.use(cors(corsOptions));
@@ -27,12 +34,25 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
+app.use((req,res,next) => {
+  console.log("Serving request type " + req.method + " for url " + req.url);
+  next();
+});
+
+// ! Route
+app.use("/", router);
+
+//app.use("/", login);
+// app.use("/", logout);
+// app.use("/", signup);
+//app.use("/mainpage", getMonthlyList);
+
 /*
 const port = 8080
-'/' 기초
-'/signup'
-'/login'
-'/logout'
-'/mainpage' 
-'/listpage'
+"/" 기초
+"/signup"
+"/login"
+"/logout"
+"/mainpage" 
+"/listpage"
 */
