@@ -12,7 +12,7 @@ const app = express();
 const corsOptions = {
   origin: [
     "http://localhost:3000",
-    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
+    // "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
   ],
   credentials: true,
 };
@@ -40,7 +40,7 @@ app.use((req, res, next) => {
   console.log("Serving request type " + req.method + " for url " + req.url);
   res.setHeader("Access-Control-Allow-Origin", [
     "http://localhost:3000",
-    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
+    // "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
   ]);
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader(
