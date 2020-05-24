@@ -2,11 +2,11 @@ const { users } = require("../../models");
 
 module.exports = {
   post: (req, res) => {
-    const { email, username, password } = req.body;
+    const { email, user_name, password } = req.body;
     users
       .findOrCreate({
         where: { email },
-        defaults: { user_name: username, password },
+        defaults: { user_name, password },
       })
       .then(([result, create]) => {
         if (!create) {
