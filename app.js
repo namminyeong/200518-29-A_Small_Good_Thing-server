@@ -14,7 +14,7 @@ const corsOptions = {
     "http://localhost:3000",
     "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
   ],
-  credentials: "true",
+  credentials: true,
 };
 
 app.use(cookieParser());
@@ -38,11 +38,21 @@ app.listen(PORT, () => {
 
 app.use((req, res, next) => {
   console.log("Serving request type " + req.method + " for url " + req.url);
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  const err = new Error("Not Found");
-  err.status = 404;
-  next(err);
+  res.setHeader("Access-Control-Allow-Origin", [
+    "http://localhost:3000",
+    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
+  ]);
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,PUT,POST,DELETE, OPTIONS, PATCH"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+
+  next();
 });
 
 // ! Route
