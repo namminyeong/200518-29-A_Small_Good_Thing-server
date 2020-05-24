@@ -28,13 +28,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       hooks: {
-        beforeCreate: (data, options) => {
-          var shasum = crypto.createHmac(
-            "sha256",
-            String(process.env.SHASUM_SECRET)
-          );
-          shasum.update(data.password);
-          data.password = shasum.digest("hex");
+        afterValidate: (data, options) => {
+          let salt = "forSecret";
+          let cipher = crypto.createCipher('aes-256-cbc', salt);
+          let result = cipher.update(data.password, 'utf8', 'base64');
+          result += cipher.final('base64');
+          data.password = result;
         },
       },
     }
