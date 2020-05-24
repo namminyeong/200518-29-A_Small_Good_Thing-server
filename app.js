@@ -1,12 +1,11 @@
 /* eslint-disable no-undef */
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
 const cors = require("cors");
-// !
-//const login = require("./routes/user");
-//const getMonthlyList = require("./routes/mainpage");
-const router = require("./routes/user");
-// !
+
+const userRouter = require("./routes/user");
+
 const app = express();
 
 const corsOptions = {
@@ -16,6 +15,7 @@ const corsOptions = {
   ]
 };
 
+app.use(cookieParser());
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
@@ -40,12 +40,7 @@ app.use((req,res,next) => {
 });
 
 // ! Route
-app.use("/", router);
-
-//app.use("/", login);
-// app.use("/", logout);
-// app.use("/", signup);
-//app.use("/mainpage", getMonthlyList);
+app.use("/", userRouter);
 
 /*
 const port = 8080
