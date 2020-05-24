@@ -1,18 +1,19 @@
 /* eslint-disable no-undef */
 const express = require("express");
 const bodyParser = require("body-parser");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const userRouter = require("./routes/user");
+const postItemRouter = require("./routes/mainpage");
 
 const app = express();
 
 const corsOptions = {
   origin: [
     "http://localhost:3000",
-    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com"
-  ]
+    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
+  ],
 };
 
 app.use(cookieParser());
@@ -34,13 +35,14 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-app.use((req,res,next) => {
+app.use((req, res, next) => {
   console.log("Serving request type " + req.method + " for url " + req.url);
   next();
 });
 
 // ! Route
 app.use("/", userRouter);
+app.use("/mainpage", postItemRouter);
 
 /*
 const port = 8080
