@@ -4,10 +4,8 @@ const { usercontroller } = require("../controller");
 // * POST /login
 router.post("/login", usercontroller.login.post);
 
-// // * POST /signout
-// router.post('/logout', (req, res) => {
-//   logout(req, res);
-// });
+// * POST /logout
+router.post("/logout", usercontroller.logout.post);
 
 // * POST /signup
 router.post("/signup", usercontroller.signup.post);
