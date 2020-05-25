@@ -15,7 +15,7 @@ module.exports = {
             result.forEach(element => {
               item.push(element.dataValues);
             });
-            res.status(301).json({total_list: { user_name: user_name, items: item }});
+            res.status(201).json({total_list: { user_name: user_name, items: item }});
             res.end();
           });
       });
