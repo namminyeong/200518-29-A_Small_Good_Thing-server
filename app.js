@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const userRouter = require("./routes/user");
 const postItemRouter = require("./routes/mainpage");
+const getMonthlyList = require("./routes/mainpage");
 
 const app = express();
 
@@ -58,6 +59,7 @@ app.use((req, res, next) => {
 // ! Route
 app.use("/", userRouter);
 app.use("/item", postItemRouter);
+app.use("/mainpage", getMonthlyList);
 
 /*
 const port = 8080
