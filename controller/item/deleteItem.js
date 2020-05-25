@@ -1,57 +1,28 @@
 const { items, images } = require("../../models");
 
 module.exports = {
-  delete: async (req, res) => {
+  delete: (req, res) => {
     const item_id = req.query.item_id;
     const { user_id, image_id } = req.body;
 
-    await items
-      .findOne({ where: { id: item_id, user_id: user_id } })
-      .then((data) => {
-        if (!data) {
-          res.status(404).send("Cannot find the item");
-        } else {
-          items
-            .destroy({ where: { user_id: user_id, id: item_id } })
-            .then(() => {
-              res.status(202).send("Item has been successfully deleted");
-            })
-            .catch((err) => {
-              console.log("CATCH", err);
-              res.status(500).send(err);
-            });
-        }
-      });
+    let item = items.findOne({ where: { id: item_id, user_id: user_id } });
+    let image = images.findOne({ where: { id: image_id } });
 
-    await images.findOne({ where: { id: image_id } }).then((data) => {
-      if (!data) {
-        res.end();
-      } else {
-        images.destroy({ where: { id: image_id } }).then(() => {
-          res.status(202).send("Image has been successfully deleted");
+    if (!item) {
+      res.status(404).send("Cannot find the item");
+    } else {
+      items
+        .destroy({ where: { user_id: user_id, id: item_id } })
+        .then(() => {
+          if (image) {
+            images.destroy({ where: { id: image_id } });
+          }
+          res.status(202).send("Item has been successfully deleted");
+        })
+        .catch((err) => {
+          console.log("CATCH", err);
+          res.status(500).send(err);
         });
-      }
-    });
-    // items
-    //   .destroy({
-    //     where: { user_id, id },
-    //   })
-    //   .then(() => {
-    //     res.status(202).send("Item has been successfully deleted");
-    //   })
-    //   .catch((err) => {
-    //     console.log("CATCH", err);
-    //     res.status(500).send(err);
-    //   });
-
-    // images
-    //   .destroy({ where: { image_id } })
-    //   .then(() => {
-    //     res.status(202).send("Image has been successfully deleted");
-    //   })
-    //   .catch((err) => {
-    //     console.log("CATCH", err);
-    //     res.status(500).send(err);
-    //   });
+    }
   },
 };
