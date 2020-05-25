@@ -22,7 +22,7 @@ module.exports = {
                 item.push(element.dataValues);
               }
             });
-            res.status(301).json({monthly_list: { user_name: user_name, items: item }});
+            res.status(201).json({monthly_list: { user_name: user_name, items: item }});
             res.end();
           });
       });
