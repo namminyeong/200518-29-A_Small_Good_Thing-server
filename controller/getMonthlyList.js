@@ -3,13 +3,12 @@ const { users } = require('../models');
 
 module.exports = {
   get: (req, res) => {
-    //res.send('user id: ' + req.params.user_id); 
 
     let date = new Date();
     const thisYear = date.getFullYear();
     const thisMonth = date.getMonth()+1;
     
-    const user_id = req.body.user_id;
+    const user_id = req.query.user_id;
     users.findAll({where: { id: user_id }})
       .then(result => {
         const user_name = result[0].dataValues.user_name;
