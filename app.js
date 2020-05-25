@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const userRouter = require("./routes/user");
 const postItemRouter = require("./routes/mainpage");
-const getMonthlyList = require("./routes/mainpage");
+const getMonthlyList = require("./routes/item");
 
 const app = express();
 
