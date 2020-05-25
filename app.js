@@ -5,8 +5,8 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const userRouter = require("./routes/user");
-const postItemRouter = require("./routes/mainpage");
-const getMonthlyList = require("./routes/item");
+const itemRouter = require("./routes/item");
+const getMonthlyList = require("./routes/mainpage");
 
 const app = express();
 
@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 
 // ! Route
 app.use("/", userRouter);
-app.use("/item", postItemRouter);
+app.use("/item", itemRouter);
 app.use("/mainpage", getMonthlyList);
 
 /*
