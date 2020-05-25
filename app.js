@@ -6,7 +6,8 @@ const cors = require("cors");
 
 const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
-const getMonthlyList = require("./routes/mainpage");
+const getMonthlyList = require("./routes/monthly_list");
+const getTotalList = require("./routes/total_list");
 
 const app = express();
 
@@ -59,14 +60,5 @@ app.use((req, res, next) => {
 // ! Route
 app.use("/", userRouter);
 app.use("/item", itemRouter);
-app.use("/mainpage", getMonthlyList);
-
-/*
-const port = 8080
-"/" 기초
-"/signup"
-"/login"
-"/logout"
-"/mainpage" 
-"/listpage"
-*/
+app.use("/monthly_list", getMonthlyList);
+app.use("/total_list", getTotalList);
