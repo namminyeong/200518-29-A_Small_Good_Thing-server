@@ -7,7 +7,7 @@ const addToken = (result) => {
     email: email,
     password: password
   };
-  userInfo.token = jwt.sign(userInfo, 'forSecret', {
+  userInfo.token = jwt.sign(userInfo, 'forSecret'/*process.env.JWT_SECRET*/, {
     expiresIn: '1d',
     issuer: 'goodthing',
     subject: 'user_info'
