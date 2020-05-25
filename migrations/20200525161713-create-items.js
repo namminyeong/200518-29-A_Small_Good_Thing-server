@@ -11,11 +11,11 @@ module.exports = {
       },
       item_name: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(255),
       },
       item_price: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(20),
       },
       date: {
         allowNull: false,

@@ -20,6 +20,34 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        user_name: "지은",
+        email: "jeeeun@goodthing.com",
+        password: "password",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_name: "민영",
+        email: "minyoung@goodthing.com",
+        password: "password",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_name: "경태",
+        email: "gyeongtae@goodthing.com",
+        password: "password",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_name: "민규",
+        email: "mingyu@goodthing.com",
+        password: "password",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 

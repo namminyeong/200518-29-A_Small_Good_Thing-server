@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       item_price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER(20),
         allowNull: false,
       },
       date: {
