@@ -1,3 +1,6 @@
 module.exports = {
-  addToken: require('./token')
+  addToken: require('./addToken'),
+  enToken: require('./enToken'),
+  encrypt: require('./cryptoPassword'),
+  decrypt: require('./cryptoPassword'),
 };
