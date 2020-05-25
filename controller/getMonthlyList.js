@@ -21,13 +21,8 @@ module.exports = {
                 item.push(element.dataValues);
               }
             });
-            if (item.length === 0) {
-              res.status(301).json({monthly_list: { user_name: user_name, items: "no data" }});
-              res.end();
-            } else {
-              res.status(301).json({monthly_list: { user_name: user_name, items: item }});
-              res.end();
-            }
+            res.status(301).json({monthly_list: { user_name: user_name, items: item }});
+            res.end();
           });
       });
   }
