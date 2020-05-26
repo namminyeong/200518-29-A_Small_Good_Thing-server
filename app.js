@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const session = require('express-session');
 
 const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
@@ -14,7 +15,7 @@ const app = express();
 const corsOptions = {
   origin: [
     "http://localhost:3000",
-    // "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
+    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
   ],
   credentials: true,
 };
@@ -28,6 +29,13 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  //cookie: { secure: true }
+}));
+
 //simple route
 app.get("/", (req, res) => {
   res.status(200).send("Success");
@@ -40,10 +48,12 @@ app.listen(PORT, () => {
 
 app.use((req, res, next) => {
   console.log("Serving request type " + req.method + " for url " + req.url);
-  res.setHeader("Access-Control-Allow-Origin", [
+  [
     "http://localhost:3000",
-    // "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
-  ]);
+    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
+  ].map(function(domain) {
+    res.setHeader( "Access-Control-Allow-Origin", domain );
+  });
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader(
     "Access-Control-Allow-Methods",
