@@ -21,6 +21,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+
         user_name: "지은",
         email: "jeeeun@goodthing.com",
         password: "password",
@@ -29,7 +30,7 @@ module.exports = {
       },
       {
         user_name: "민영",
-        email: "minyoung@goodthing.com",
+        email: "minyeong@goodthing.com",
         password: "password",
         createdAt: new Date(),
         updatedAt: new Date(),

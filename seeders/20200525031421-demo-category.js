@@ -28,6 +28,16 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        category_name: "옷",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        category_name: "커피",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
