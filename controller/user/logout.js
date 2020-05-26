@@ -9,14 +9,12 @@ module.exports = {
           //console.log(" ---DESTORY--- req.session",req.session)
           res.clearCookie('session_id')
           res.clearCookie('token', {path: '/'});
-          res.redirect('/');
-          res.end();
+          res.status(200).end();
         }
       });
     } else {
       console.log('NO SESSION ID');
-      res.redirect('/');
-      res.end();
+      res.status(200).end();
     }
   }
 };

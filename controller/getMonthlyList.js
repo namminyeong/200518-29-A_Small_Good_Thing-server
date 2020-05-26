@@ -25,6 +25,9 @@ module.exports = {
             res.status(201).json({monthly_list: { user_name: user_name, items: item }});
             res.end();
           });
+      }).catch((err) => {
+        console.log("CATCH", err);
+        res.status(500).send(err);
       });
   }
 };
