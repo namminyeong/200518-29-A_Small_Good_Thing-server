@@ -20,6 +20,20 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        user_name: "GoodThing",
+        email: "asmall@goodthing.com",
+        password: "password",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        user_name: "GoodThing",
+        email: "asmall@goodthing.com",
+        password: "password",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
