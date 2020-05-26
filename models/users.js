@@ -30,9 +30,9 @@ module.exports = (sequelize, DataTypes) => {
       hooks: {
         afterValidate: (data, options) => {
           let salt = "forSecret";
-          let cipher = crypto.createCipher('aes-256-cbc', salt);
-          let result = cipher.update(data.password, 'utf8', 'base64');
-          result += cipher.final('base64');
+          let cipher = crypto.createCipher("aes-256-cbc", salt);
+          let result = cipher.update(data.password, "utf8", "base64");
+          result += cipher.final("base64");
           data.password = result;
         },
       },

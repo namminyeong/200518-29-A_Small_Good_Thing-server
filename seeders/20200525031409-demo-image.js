@@ -18,6 +18,41 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        image_file: "This is a fake image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        image_file: "This is a fake image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        image_file: "This is a fake image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        image_file: "This is a fake image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        image_file: "This is a fake image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        image_file: "This is a fake image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        image_file: "This is a fake image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
