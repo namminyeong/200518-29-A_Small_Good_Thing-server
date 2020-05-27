@@ -20,7 +20,7 @@ module.exports = {
           let extension = path.extname(file.originalname);
           cb(null, `image/${Date.now().toString()}${extension}`);
         },
-        acl: "public-read",
+        acl: "public-read-write",
       }),
     });
 
