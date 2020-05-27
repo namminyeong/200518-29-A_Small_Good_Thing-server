@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       date: {
-        type: DataTypes.DATEONLY, // TODO: search format
+        type: DataTypes.DATEONLY,
         allowNull: false,
       },
       memo: {
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       purchased: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false, //TODO: can it be true or false // or 1 or 1?
+        defaultValue: false,
         allowNull: false,
       },
       worry: {
