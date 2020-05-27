@@ -9,7 +9,7 @@ module.exports = {
           //console.log(" ---DESTORY--- req.session",req.session)
           res.clearCookie('session_id')
           res.clearCookie('token', {path: '/'});
-          res.status(200).end();
+          res.status(200).end('post logout success');
         }
       });
     } else {
