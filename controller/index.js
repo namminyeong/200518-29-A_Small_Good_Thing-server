@@ -5,4 +5,5 @@ module.exports = {
   getTotalList: require("./getTotalList"),
   imagecontroller: require("./uploadImage"),
   deleteImage: require("./deleteImage"),
+  multiDelete: require("./multiDelete"),
 };

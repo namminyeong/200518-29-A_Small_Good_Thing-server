@@ -10,6 +10,7 @@ const itemRouter = require("./routes/item");
 const getMonthlyList = require("./routes/monthly_list");
 const getTotalList = require("./routes/total_list");
 const imageRouter = require("./routes/image");
+const multiDelete = require("./routes/multiDelete");
 
 const app = express();
 
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
 // ! Route
 app.use("/", userRouter);
 app.use("/item", itemRouter);
+app.use("/items", multiDelete);
 app.use("/monthly_list", getMonthlyList);
 app.use("/total_list", getTotalList);
 app.use("/image", imageRouter);
