@@ -30,12 +30,14 @@ module.exports = {
       if (req.file === undefined || req.file === null) {
         res.end(err.message);
       } else if (req.file) {
-        images.create({
-          image_file: req.file.location,
-        });
-        res.status(200).json({
-          image_file: req.file.location,
-        });
+        images
+          .create({
+            image_file: req.file.location,
+          })
+          .then((result) => {
+            const { id } = result.dataValues;
+            res.status(200).send({ image_id: id, url: req.file.location });
+          });
       } else {
         res.status(500).send("Sever error");
       }
