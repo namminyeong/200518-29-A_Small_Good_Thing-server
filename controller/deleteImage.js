@@ -9,9 +9,10 @@ AWS.config.loadFromPath("config/s3config.json");
 
 module.exports = {
   deleteImage: (req, res) => {
+    console.log(req)
     // ! S3 객체 생성
     let s3 = new AWS.S3();
-    const { image_id, image_file } = req.body;
+    const { image_id, image_file } = req;
     const key = image_file.substring(
       image_file.lastIndexOf(".amazonaws.com/") + 15
     );
@@ -23,7 +24,6 @@ module.exports = {
       if (data) {
         images.findOne({ where: { id: image_id, image_file } }).then(() => {
           images.destroy({ where: { id: image_id, image_file } });
-          res.status(200).send("Image deleted successfully");
         });
       } else {
         res
