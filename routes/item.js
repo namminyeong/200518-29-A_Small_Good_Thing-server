@@ -4,13 +4,13 @@ const { itemcontroller } = require("../controller");
 // * POST /item
 router.post("/", itemcontroller.addItem.post);
 
-// * DELETE /item?item-id=${item_id}
+// * DELETE /item?item_id=${item_id}
 router.delete("/:item_id?", itemcontroller.deleteItem.delete);
 
-// * PATCH /item?item-id=${item_id}
+// * PATCH /item?item_id=${item_id}
 router.patch("/:item_id?", itemcontroller.editItem.patch);
 
-// * GET /item?item-id=${item_id}
+// * GET /item?item_id=${item_id}
 router.get("/:item_id?", itemcontroller.showItem.get);
 
 module.exports = router;
