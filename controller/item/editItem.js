@@ -13,6 +13,7 @@ module.exports = {
       date,
       worry,
       category_id,
+      image_id,
     } = req.body;
 
     let item = items.findOne({ where: { id: item_id, user_id: user_id } });
@@ -30,6 +31,7 @@ module.exports = {
             date,
             worry,
             category_id,
+            image_id,
           },
           {
             where: { user_id: user_id, id: item_id },
