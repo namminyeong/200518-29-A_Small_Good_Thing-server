@@ -51,23 +51,27 @@ app.listen(PORT, () => {
 
 app.use((req, res, next) => {
   console.log("Serving request type " + req.method + " for url " + req.url);
-  [
+
+  const allowedOrigins = [
     "http://localhost:3000",
     "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
-  ].map(function(domain) {
-    res.setHeader("Access-Control-Allow-Origin", domain);
-  });
+  ];
+  const origin = req.headers.origin;
+  if(allowedOrigins.indexOf(origin) > -1){
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET,PUT,POST,DELETE, OPTIONS, PATCH"
+    "GET, PUT, POST, DELETE, OPTIONS, PATCH"
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
+    "X-Requested-With, content-type"
   );
 
-  next();
+  return next();
 });
 
 // ! Route
