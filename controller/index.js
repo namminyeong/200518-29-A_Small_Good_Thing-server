@@ -4,4 +4,5 @@ module.exports = {
   getMonthlyList: require("./getMonthlyList"),
   getTotalList: require("./getTotalList"),
   imagecontroller: require("./uploadImage"),
+  deleteImage: require("./deleteImage"),
 };

@@ -36,7 +36,9 @@ module.exports = {
           })
           .then((result) => {
             const { id } = result.dataValues;
-            res.status(200).send({ image_id: id, url: req.file.location });
+            res
+              .status(200)
+              .send({ image_id: id, image_file: req.file.location });
           });
       } else {
         res.status(500).send("Sever error");
