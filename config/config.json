@@ -5,7 +5,8 @@
     "database": "goodthing_dev",
     "host": "goodthing.cvt1xva8wlf4.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "operatorsAliases": false,
+    "timezone": "Asia/Seoul"
   },
   "test": {
     "username": "PP_PP",
@@ -13,7 +14,8 @@
     "database": "goodthing_test",
     "host": "goodthing.cvt1xva8wlf4.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "operatorsAliases": false,
+    "timezone": "Asia/Seoul"
   },
   "production": {
     "username": "PP_PP",
@@ -21,6 +23,7 @@
     "database": "goodthing_production",
     "host": "goodthing.cvt1xva8wlf4.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "operatorsAliases": false,
+    "timezone": "Asia/Seoul"
   }
 }

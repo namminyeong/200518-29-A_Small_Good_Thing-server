@@ -3,12 +3,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const session = require('express-session');
+const session = require("express-session");
 
 const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
 const getMonthlyList = require("./routes/monthly_list");
 const getTotalList = require("./routes/total_list");
+const imageRouter = require("./routes/image");
 
 const app = express();
 
@@ -29,12 +30,14 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  //cookie: { secure: true }
-}));
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    //cookie: { secure: true }
+  })
+);
 
 //simple route
 app.get("/", (req, res) => {
@@ -52,7 +55,7 @@ app.use((req, res, next) => {
     "http://localhost:3000",
     "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
   ].map(function(domain) {
-    res.setHeader( "Access-Control-Allow-Origin", domain );
+    res.setHeader("Access-Control-Allow-Origin", domain);
   });
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader(
@@ -72,3 +75,4 @@ app.use("/", userRouter);
 app.use("/item", itemRouter);
 app.use("/monthly_list", getMonthlyList);
 app.use("/total_list", getTotalList);
+app.use("/image", imageRouter);

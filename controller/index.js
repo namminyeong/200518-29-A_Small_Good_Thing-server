@@ -3,4 +3,5 @@ module.exports = {
   itemcontroller: require("./item"),
   getMonthlyList: require("./getMonthlyList"),
   getTotalList: require("./getTotalList"),
+  imagecontroller: require("./uploadImage"),
 };
