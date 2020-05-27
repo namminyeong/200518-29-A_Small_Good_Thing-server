@@ -3,7 +3,6 @@ const multer = require("multer");
 const multerS3 = require("multer-s3");
 const AWS = require("aws-sdk");
 const { images } = require("../models");
-// const { accessKeyId, secretAccessKey } = require("../config/config.json");
 
 // ! SDK 로딩, (인증 자격 증명 로드)
 AWS.config.loadFromPath("config/s3config.json");
@@ -16,7 +15,7 @@ module.exports = {
     let upload = multer({
       storage: multerS3({
         s3: s3,
-        bucket: "elenajelbucket",
+        bucket: "asmallgoodthing",
         key: function(req, file, cb) {
           let extension = path.extname(file.originalname);
           cb(null, `image/${Date.now().toString()}${extension}`);
