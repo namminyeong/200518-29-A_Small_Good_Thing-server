@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 "use strict";
 const crypto = require("crypto");
+const dotenv = require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
   const users = sequelize.define(
@@ -29,8 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         afterValidate: (data, options) => {
-          let salt = "forSecret";
-          let cipher = crypto.createCipher("aes-256-cbc", salt);
+          let cipher = crypto.createCipher("aes-256-cbc", process.env.CIPHER_PASSWORD || "forSecret");
           let result = cipher.update(data.password, "utf8", "base64");
           result += cipher.final("base64");
           data.password = result;
