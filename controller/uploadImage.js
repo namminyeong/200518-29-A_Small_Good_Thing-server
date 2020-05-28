@@ -2,13 +2,14 @@ const path = require("path");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const AWS = require("aws-sdk");
-const { images } = require("../models");
+const { items } = require("../models");
 
 // ! SDK 로딩, (인증 자격 증명 로드)
 AWS.config.loadFromPath("config/s3config.json");
 
 module.exports = {
   uploadImage: (req, res) => {
+    const item_id = req.query.item_id;
     // ! S3 객체 생성
     let s3 = new AWS.S3();
 
@@ -30,15 +31,19 @@ module.exports = {
       if (req.file === undefined || req.file === null) {
         res.end(err.message);
       } else if (req.file) {
-        images
-          .create({
+        items
+          .update({
             image_file: req.file.location,
+          },
+          {
+            where: { id: item_id },
+            returning: true,
+            plain: true,
           })
-          .then((result) => {
-            const { id } = result.dataValues;
+          .then(() => {
             res
               .status(200)
-              .send({ image_id: id, image_file: req.file.location });
+              .send({ item_id: item_id ,image_file: req.file.location });
           });
       } else {
         res.status(500).send("Sever error");

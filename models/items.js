@@ -52,18 +52,15 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      image_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "images",
-          key: "id",
-        },
+      image_file: {
+        type: DataTypes.STRING(3000), // TODO: image 저장하는 방법 찾아봐야함
+        allowNull: true,
       },
     },
     {}
   );
-  // items.associate = function(models) {
-  //   // associations can be defined here
-  // };
+  items.associate = function(models) {
+    // associations can be defined here
+  };
   return items;
 };

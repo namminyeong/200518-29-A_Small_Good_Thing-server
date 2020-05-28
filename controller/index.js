@@ -3,7 +3,7 @@ module.exports = {
   itemcontroller: require("./item"),
   getMonthlyList: require("./getMonthlyList"),
   getTotalList: require("./getTotalList"),
-  imagecontroller: require("./uploadImage"),
+  uploadImage: require("./uploadImage"),
   deleteImage: require("./deleteImage"),
   multiDelete: require("./multiDelete"),
 };
