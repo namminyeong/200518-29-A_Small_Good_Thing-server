@@ -43,6 +43,10 @@ module.exports = {
           max: 5,
         },
       },
+      image_file: {
+        type: Sequelize.STRING(3000),
+        allowNull: true,
+      },
       user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
@@ -55,13 +59,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: "categories",
-          key: "id",
-        },
-      },
-      image_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "images",
           key: "id",
         },
       },
