@@ -12,13 +12,13 @@ module.exports = {
       purchased,
       worry,
       category_id,
-      image_id,
+      image_file,
     } = req.body;
 
     items
       .findOrCreate({
         where: { user_id, item_name, item_price, date },
-        defaults: { memo, link, purchased, worry, category_id, image_id },
+        defaults: { memo, link, purchased, worry, category_id, image_file },
       })
       .then(([result, create]) => {
         if (!create) {
@@ -35,7 +35,7 @@ module.exports = {
             worry,
             user_id,
             category_id,
-            image_id,
+            image_file,
           } = result.dataValues;
           res.status(201).send({
             id,
@@ -48,7 +48,7 @@ module.exports = {
             worry,
             user_id,
             category_id,
-            image_id,
+            image_file,
           });
         }
       })

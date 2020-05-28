@@ -1,5 +1,4 @@
-const { items } = require("../models");
-const { users } = require('../models');
+const { users, items } = require("../models");
 
 module.exports = {
   get: (req, res) => {
@@ -9,20 +8,20 @@ module.exports = {
     const thisMonth = date.getMonth()+1;
     
     const user_id = req.query.user_id;
-    users.findAll({where: { id: user_id }})
-      .then(result => {
-        const user_name = result[0].dataValues.user_name;
+    users.findOne({where: { id: user_id }})
+      .then(user => {
+        const user_name = user.dataValues.user_name;
         return user_name;
       }).then(user_name => {
-        const item = [];
-        items.findAll({where: { user_id: user_id }})
-          .then(result => {
-            result.forEach(element => {
-              if(Number(element.date.slice(0,4)) === thisYear && Number(element.date.slice(5,7)) === thisMonth) {
-                item.push(element.dataValues);
+        const items_info = [];
+        items.findAll({ where: { user_id: user_id }})
+          .then(all_items => {
+            all_items.forEach(item => {
+              if(Number(item.date.slice(0,4)) === thisYear && Number(item.date.slice(5,7)) === thisMonth) {
+                items_info.push(item.dataValues);
               }
             });
-            res.status(201).json({monthly_list: { user_name: user_name, items: item }});
+            res.status(201).json({monthly_list: { user_name: user_name, items: items_info }});
             res.end();
           });
       }).catch((err) => {
