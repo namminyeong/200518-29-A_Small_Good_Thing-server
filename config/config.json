@@ -1,27 +1,9 @@
 {
   "development": {
-    "username": "PP_PP",
-    "password": "asmallgoodthing",
-    "database": "goodthing_dev",
-    "host": "goodthing.cvt1xva8wlf4.ap-northeast-2.rds.amazonaws.com",
-    "dialect": "mysql",
-    "operatorsAliases": false,
-    "timezone": "Asia/Seoul"
-  },
-  "test": {
-    "username": "PP_PP",
-    "password": null,
-    "database": "goodthing_test",
-    "host": "goodthing.cvt1xva8wlf4.ap-northeast-2.rds.amazonaws.com",
-    "dialect": "mysql",
-    "operatorsAliases": false,
-    "timezone": "Asia/Seoul"
-  },
-  "production": {
-    "username": "PP_PP",
-    "password": null,
-    "database": "goodthing_production",
-    "host": "goodthing.cvt1xva8wlf4.ap-northeast-2.rds.amazonaws.com",
+    "username": "root",
+    "password": "password",
+    "database": "your_dev",
+    "host": "your_host",
     "dialect": "mysql",
     "operatorsAliases": false,
     "timezone": "Asia/Seoul"

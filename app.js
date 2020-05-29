@@ -18,7 +18,6 @@ const app = express();
 const corsOptions = {
   origin: [
     "http://localhost:3000",
-    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
   ],
   credentials: true,
 };
@@ -56,7 +55,6 @@ app.use((req, res, next) => {
 
   const allowedOrigins = [
     "http://localhost:3000",
-    "http://asmallgoodthing.s3-website.ap-northeast-2.amazonaws.com",
   ];
   const origin = req.headers.origin;
   if(allowedOrigins.indexOf(origin) > -1){
