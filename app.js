@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const session = require("express-session");
+const dotenv = require('dotenv').config();
 
 const userRouter = require("./routes/user");
 const itemRouter = require("./routes/item");
@@ -33,10 +34,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: process.env.SESSION_PASSWORD || "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    //cookie: { secure: true }
+    cookie: { sameSite: "none" }
   })
 );
 
