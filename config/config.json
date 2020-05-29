@@ -1,0 +1,11 @@
+{
+  "development": {
+    "username": "root",
+    "password": "password",
+    "database": "your_dev",
+    "host": "your_host",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "timezone": "Asia/Seoul"
+  }
+}
